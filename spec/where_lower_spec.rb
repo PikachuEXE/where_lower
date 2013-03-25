@@ -14,6 +14,11 @@ describe WhereLower do
   describe 'finding records with condition(s) for columns inside the model table' do
     describe 'finding record using string column' do
       describe 'with type string' do
+        before do
+          Parent.where(name: parent_name).should_not be_empty
+          Parent.where(name: "#{parent_name}blah").should be_empty
+        end
+
         it 'works like where' do
           Parent.where_lower(name: parent_name).should_not be_empty
           Parent.where_lower(name: "#{parent_name}blah").should be_empty
@@ -25,6 +30,11 @@ describe WhereLower do
       end
 
       describe 'with type text' do
+        before do
+          Parent.where(description: parent_description).should_not be_empty
+          Parent.where(description: "#{parent_description}blah").should be_empty
+        end
+
         it 'works like where' do
           Parent.where_lower(description: parent_description).should_not be_empty
           Parent.where_lower(description: "#{parent_description}blah").should be_empty
@@ -37,6 +47,11 @@ describe WhereLower do
 
       describe 'with different types of values in conditions' do
         describe 'with Range' do
+          before do
+            Parent.where(name: ('Parens'..'Parenu')).should_not be_empty
+            Parent.where(name: ('Parenu'..'Parenv')).should be_empty
+          end
+
           it 'works like where' do
             Parent.where_lower(name: ('Parens'..'Parenu')).should_not be_empty
             Parent.where_lower(name: ('Parenu'..'Parenv')).should be_empty
@@ -47,6 +62,11 @@ describe WhereLower do
           end
         end
         describe 'with Array' do
+          before do
+            Parent.where(name: [parent_name, "#{parent_name}blah"]).should_not be_empty
+            Parent.where(name: ["#{parent_name}blah1", "#{parent_name}blah2"]).should be_empty
+          end
+
           it 'works like where' do
             Parent.where_lower(name: [parent_name, "#{parent_name}blah"]).should_not be_empty
             Parent.where_lower(name: ["#{parent_name}blah1", "#{parent_name}blah2"]).should be_empty
@@ -57,13 +77,27 @@ describe WhereLower do
           end
         end
         describe 'with nil' do
-          it 'works like where' do
-            Parent.where_lower(name: nil).should be_empty
+          context 'when record with nil value does not exist' do
+            before do
+              Parent.where(name: nil).should be_empty
+            end
 
-            Parent.create!(name: nil, description: parent_description,
-        age: 40, is_minecraft_lover: false, created_at: 1.day.ago)
+            it 'works like where' do
+              Parent.where_lower(name: nil).should be_empty
+            end
+          end
+          context 'when record with nil value does exist' do
+            before do
+              Parent.create!(name: nil)
+            end
 
-            Parent.where_lower(name: nil).should_not be_empty
+            before do
+              Parent.where(name: nil).should_not be_empty
+            end
+
+            it 'works like where' do
+              Parent.where_lower(name: nil).should_not be_empty
+            end
           end
         end
       end
@@ -71,6 +105,11 @@ describe WhereLower do
 
     describe 'finding record using non string columns' do
       describe 'with type integer' do
+        before do
+          Parent.where(age: 40).should_not be_empty
+          Parent.where(age: 41).should be_empty
+        end
+
         it 'works like where' do
           Parent.where_lower(age: 40).should_not be_empty
           Parent.where_lower(age: 41).should be_empty
@@ -78,6 +117,11 @@ describe WhereLower do
       end
 
       describe 'with type boolean' do
+        before do
+          Parent.where(is_minecraft_lover: false).should_not be_empty
+          Parent.where(is_minecraft_lover: true).should be_empty
+        end
+
         it 'works like where' do
           Parent.where_lower(is_minecraft_lover: false).should_not be_empty
           Parent.where_lower(is_minecraft_lover: true).should be_empty
@@ -85,5 +129,4 @@ describe WhereLower do
       end
     end
   end
-
 end
