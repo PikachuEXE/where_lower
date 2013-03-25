@@ -4,7 +4,9 @@ describe WhereLower do
 
   let(:parent_name) { 'Parent #1' }
   let(:parent_name2) { 'Parent #10' }
+  let(:parent_name3) { 'Parent #20' }
   let(:parent_description) { 'I need a Medic!' }
+  let(:parent_description2) { 'I need a Pokemon!' }
 
   let!(:parent) do
     Parent.create!(name: parent_name, description: parent_description,
@@ -16,32 +18,32 @@ describe WhereLower do
       describe 'with type string' do
         before do
           Parent.where(name: parent_name).should_not be_empty
-          Parent.where(name: "#{parent_name}blah").should be_empty
+          Parent.where(name: parent_name2).should be_empty
         end
 
         it 'works like where' do
           Parent.where_lower(name: parent_name).should_not be_empty
-          Parent.where_lower(name: "#{parent_name}blah").should be_empty
+          Parent.where_lower(name: parent_name2).should be_empty
         end
         it 'works like where case insensitively' do
           Parent.where_lower(name: parent_name.swapcase).should_not be_empty
-          Parent.where_lower(name: "#{parent_name}blah".swapcase).should be_empty
+          Parent.where_lower(name: parent_name2.swapcase).should be_empty
         end
       end
 
       describe 'with type text' do
         before do
           Parent.where(description: parent_description).should_not be_empty
-          Parent.where(description: "#{parent_description}blah").should be_empty
+          Parent.where(description: parent_description2).should be_empty
         end
 
         it 'works like where' do
           Parent.where_lower(description: parent_description).should_not be_empty
-          Parent.where_lower(description: "#{parent_description}blah").should be_empty
+          Parent.where_lower(description: parent_description2).should be_empty
         end
         it 'works like where case insensitively' do
           Parent.where_lower(description: parent_description.swapcase).should_not be_empty
-          Parent.where_lower(description: "#{parent_description}blah".swapcase).should be_empty
+          Parent.where_lower(description: parent_description2.swapcase).should be_empty
         end
       end
 
@@ -63,17 +65,17 @@ describe WhereLower do
         end
         describe 'with Array' do
           before do
-            Parent.where(name: [parent_name, "#{parent_name}blah"]).should_not be_empty
-            Parent.where(name: ["#{parent_name}blah1", "#{parent_name}blah2"]).should be_empty
+            Parent.where(name: [parent_name, parent_name2]).should_not be_empty
+            Parent.where(name: [parent_name2, parent_name3]).should be_empty
           end
 
           it 'works like where' do
-            Parent.where_lower(name: [parent_name, "#{parent_name}blah"]).should_not be_empty
-            Parent.where_lower(name: ["#{parent_name}blah1", "#{parent_name}blah2"]).should be_empty
+            Parent.where_lower(name: [parent_name, parent_name2]).should_not be_empty
+            Parent.where_lower(name: [parent_name2, parent_name3]).should be_empty
           end
           it 'works like where case insensitively' do
-            Parent.where_lower(name: [parent_name.swapcase, "#{parent_name}blah".swapcase]).should_not be_empty
-            Parent.where_lower(name: ["#{parent_name}blah1".swapcase, "#{parent_name}blah2".swapcase]).should be_empty
+            Parent.where_lower(name: [parent_name.swapcase, parent_name2.swapcase]).should_not be_empty
+            Parent.where_lower(name: [parent_name2.swapcase, parent_name3.swapcase]).should be_empty
           end
         end
         describe 'with nil' do
