@@ -63,6 +63,7 @@ describe WhereLower do
             Parent.where_lower(name: (('Parenu'.downcase)..('Parenv'.downcase))).should be_empty
           end
         end
+
         describe 'with Array' do
           before do
             Parent.where(name: [parent_name, parent_name2]).should_not be_empty
@@ -78,6 +79,7 @@ describe WhereLower do
             Parent.where_lower(name: [parent_name2.swapcase, parent_name3.swapcase]).should be_empty
           end
         end
+
         describe 'with nil' do
           context 'when record with nil value does not exist' do
             before do
@@ -100,6 +102,14 @@ describe WhereLower do
             it 'works like where' do
               Parent.where_lower(name: nil).should_not be_empty
             end
+          end
+        end
+
+        describe 'with query injection' do
+          it 'prevents injection' do
+            expect do
+              Parent.where_lower(name: "'); truncate table parents")
+            end.to_not change(Parent, :count)
           end
         end
       end
