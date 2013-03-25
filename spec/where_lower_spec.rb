@@ -3,6 +3,7 @@ require 'spec_helper'
 describe WhereLower do
 
   let(:parent_name) { 'Parent #1' }
+  let(:parent_name2) { 'Parent #10' }
   let(:parent_description) { 'I need a Medic!' }
 
   let!(:parent) do
@@ -31,6 +32,36 @@ describe WhereLower do
         it 'works like where case insensitively' do
           Parent.where_lower(description: parent_description.swapcase).should_not be_empty
           Parent.where_lower(description: "#{parent_description}blah".swapcase).should be_empty
+        end
+      end
+
+      describe 'with different types of values in conditions' do
+        describe 'with Range' do
+          it 'is not supported' do
+            expect do
+              Parent.where_lower(name: (parent_name..parent_name2)).should_not be_empty
+            end.to raise_error(ArgumentError)
+          end
+        end
+        describe 'with Array' do
+          it 'works like where' do
+            Parent.where_lower(name: [parent_name, "#{parent_name}blah"]).should_not be_empty
+            Parent.where_lower(name: ["#{parent_name}blah1", "#{parent_name}blah2"]).should be_empty
+          end
+          it 'works like where case insensitively' do
+            Parent.where_lower(name: [parent_name.swapcase, "#{parent_name}blah".swapcase]).should_not be_empty
+            Parent.where_lower(name: ["#{parent_name}blah1".swapcase, "#{parent_name}blah2".swapcase]).should be_empty
+          end
+        end
+        describe 'with nil' do
+          it 'works like where' do
+            Parent.where_lower(name: nil).should be_empty
+
+            Parent.create!(name: nil, description: parent_description,
+        age: 40, is_minecraft_lover: false, created_at: 1.day.ago)
+
+            Parent.where_lower(name: nil).should_not be_empty
+          end
         end
       end
     end
