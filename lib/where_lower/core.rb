@@ -5,7 +5,9 @@ module WhereLower
     end
 
     module ClassMethods
-      def where_lower(fields={})
+      def where_lower(fields)
+        fields.is_a?(Hash) or raise AugumentError, 'fields is not a Hash'
+
         scope = self
         table = self.arel_table
 
