@@ -14,8 +14,10 @@ module WhereLower
         fields.each do |field_name, value|
           case value
           when Range
-            # Performing `BETWEEN` with strings is unpredictable and not supported here
-            raise ArgumentError, 'Using Range as value in conditions is not supported'
+            value = Range.new(value.begin.to_s.downcase, value.end.to_s.downcase, value.exclude_end?)
+            scope = scope.where(
+              table[field_name].lower.in(value)
+            )
           when Array # Assume the content to be string, or can be converted to string
             value = value.to_a.map {|x| x.to_s.downcase}
             scope = scope.where(

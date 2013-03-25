@@ -37,10 +37,13 @@ describe WhereLower do
 
       describe 'with different types of values in conditions' do
         describe 'with Range' do
-          it 'is not supported' do
-            expect do
-              Parent.where_lower(name: (parent_name..parent_name2)).should_not be_empty
-            end.to raise_error(ArgumentError)
+          it 'works like where' do
+            Parent.where_lower(name: ('Parens'..'Parenu')).should_not be_empty
+            Parent.where_lower(name: ('Parenu'..'Parenv')).should be_empty
+          end
+          it 'works like where case insensitively' do
+            Parent.where_lower(name: (('Parens'.downcase)..('Parenu'.downcase))).should_not be_empty
+            Parent.where_lower(name: (('Parenu'.downcase)..('Parenv'.downcase))).should be_empty
           end
         end
         describe 'with Array' do
