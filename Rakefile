@@ -1,8 +1,11 @@
 require 'appraisal'
+require 'rubygems'
+require 'bundler/setup'
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
 
-RSpec::Core::RakeTask.new(:spec)
+task :default do
+  sh "rake appraisal:install && rake appraisal spec"
+end
 
-desc "Run all spec"
-task :default => :spec
+RSpec::Core::RakeTask.new(:spec)
