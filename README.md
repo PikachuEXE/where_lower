@@ -27,3 +27,7 @@ Other types will not be touched
 ```ruby
 SomeActiveRecordClass.where_lower(attribute1: 'AbC', attribute2, ['stRing', 123, :symBol], attribute3: ('AA'..'AZ'))
 ```
+
+Contributors
+============
+[Matthew Rudy Jacobs](https://github.com/matthewrudy) (Who wrote the first version of `where_lower` method)
