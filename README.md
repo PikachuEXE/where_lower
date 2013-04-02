@@ -25,7 +25,7 @@ Values in `Array` and `Range` will be converted to `String` and then `downcase`
 Other types will not be touched
 
 ```ruby
-SomeActiveRecordClass.where_lower(attribute1: 'AbC', attribute2, ['stRing', 123, :symBol], attribute3: ('AA'..'AZ'))
+SomeActiveRecordClass.where_lower(attribute1: 'AbC', attribute2: ['stRing', 123, :symBol], attribute3: ('AA'..'AZ'))
 ```
 
 Contributors
