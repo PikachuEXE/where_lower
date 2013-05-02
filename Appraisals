@@ -10,6 +10,6 @@ appraise "rails3-2" do
 end
 
 appraise "rails4-0" do
-  version = "4.0.0.beta1"
+  version = "4.0.0.rc1"
   gem 'activerecord', version
 end
