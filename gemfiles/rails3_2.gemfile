@@ -6,7 +6,7 @@ gem "appraisal"
 gem "rake"
 gem "sqlite3"
 gem "rspec"
-gem "database_cleaner", ">= 1.0.0.RC1"
+gem "database_cleaner"
 gem "activerecord", "3.2.13"
 
 gemspec :path=>"../"
