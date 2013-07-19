@@ -10,6 +10,7 @@ Tested against:
 - Ruby `1.9.2`, `1.9.3`, `2.0.0` (except Rails 4 with `1.9.2`)
 
 [![Build Status](https://travis-ci.org/PikachuEXE/where_lower.png?branch=master)](https://travis-ci.org/PikachuEXE/where_lower)
+[![Gem Version](https://badge.fury.io/rb/where_lower.png)](http://badge.fury.io/rb/where_lower)
 
 Install
 =======
