@@ -12,6 +12,7 @@ Tested against:
 [![Build Status](https://travis-ci.org/PikachuEXE/where_lower.png?branch=master)](https://travis-ci.org/PikachuEXE/where_lower)
 [![Gem Version](https://badge.fury.io/rb/where_lower.png)](http://badge.fury.io/rb/where_lower)
 [![Dependency Status](https://gemnasium.com/PikachuEXE/where_lower.png)](https://gemnasium.com/PikachuEXE/where_lower)
+[![Coverage Status](https://coveralls.io/repos/PikachuEXE/where_lower/badge.png)](https://coveralls.io/r/PikachuEXE/where_lower)
 
 Install
 =======
