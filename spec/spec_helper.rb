@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!('rails')
+
 require 'active_record'
 require 'where_lower'
 require 'database_cleaner'
