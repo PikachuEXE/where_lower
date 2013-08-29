@@ -8,6 +8,6 @@ gem "sqlite3"
 gem "rspec"
 gem "database_cleaner"
 gem "coveralls", :require=>false
-gem "activerecord", "3.2.13"
+gem "activerecord", "3.2.14"
 
 gemspec :path=>"../"
