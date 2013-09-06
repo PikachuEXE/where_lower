@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'activerecord'
+gem 'squeel'
 gem 'appraisal'
 gem 'rake'
 gem 'sqlite3'
