@@ -1,2 +1,5 @@
 gemfiles/*.gemfile.lock
 Gemfile.lock
+# Ignore Coverage Report
+coverage/.last_run.json
+coverage/.resultset.json
