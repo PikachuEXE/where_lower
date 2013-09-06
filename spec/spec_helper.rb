@@ -64,6 +64,8 @@ end
 
 class Parent < ActiveRecord::Base
   has_many :children, inverse_of: :parent
+
+  scope :latest_first, proc { order('created_at DESC') }
 end
 
 class Child < ActiveRecord::Base

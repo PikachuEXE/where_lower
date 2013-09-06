@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe WhereLower do
 
-  let(:parent_name) { 'Parent #1' }
+  let(:parent_name) { 'Parent' }
   let(:parent_name2) { 'Parent #10' }
   let(:parent_name3) { 'Parent #20' }
   let(:parent_description) { 'I need a Medic!' }
@@ -73,10 +73,12 @@ describe WhereLower do
           it 'works like where' do
             Parent.where_lower(name: [parent_name, parent_name2]).should_not be_empty
             Parent.where_lower(name: [parent_name2, parent_name3]).should be_empty
+            Parent.where_lower(name: []).should be_empty
           end
           it 'works like where case insensitively' do
             Parent.where_lower(name: [parent_name.swapcase, parent_name2.swapcase]).should_not be_empty
             Parent.where_lower(name: [parent_name2.swapcase, parent_name3.swapcase]).should be_empty
+            Parent.where_lower(name: []).should be_empty
           end
         end
 
@@ -110,6 +112,36 @@ describe WhereLower do
             expect do
               Parent.where_lower(name: "'); truncate table parents")
             end.to_not change(Parent, :count)
+          end
+        end
+
+
+        describe 'with chaining' do
+          it 'can be chained with where' do
+            Parent.where_lower(name: parent_name).where(description: parent_description).should_not be_empty
+          end
+          
+          it 'can be chained with where_lower' do
+            Parent.where_lower(name: parent_name).where_lower(description: parent_description).should_not be_empty
+          end
+
+          it 'can be chained with order' do
+            Parent.where_lower(name: parent_name).order(:description).should_not be_empty
+          end
+
+
+          it 'can be chained with name scope' do
+            Parent.where_lower(name: parent_name).latest_first.should_not be_empty
+          end
+
+
+          it 'can be chained with where in squeel' do
+            description_value = parent_description
+            Parent.where_lower(name: parent_name).where{description.eq description_value}.should_not be_empty
+          end
+
+          it 'can be chained with order in squeel' do
+            Parent.where_lower(name: parent_name).order{description}.should_not be_empty
           end
         end
       end
