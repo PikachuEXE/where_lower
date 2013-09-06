@@ -15,16 +15,15 @@ module WhereLower
 
       def spawn_lower_scope(fields)
         scope = self
-        table = self.arel_table
 
         fields.each do |name, value|
-          scope = spawn_lower_scope_by_type(scope, table, name, value)
+          scope = spawn_lower_scope_by_type(scope, name, value)
         end
 
         scope
       end
 
-      def spawn_lower_scope_by_type(scope, table, column_name, value)
+      def spawn_lower_scope_by_type(scope, column_name, value)
         case value
         when Range
           value = Range.new(value.begin.to_s.downcase, value.end.to_s.downcase, value.exclude_end?)
