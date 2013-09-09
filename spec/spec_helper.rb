@@ -1,5 +1,7 @@
-require 'coveralls'
-Coveralls.wear!('rails')
+if ENV["TRAVIS"]
+  require 'coveralls'
+  Coveralls.wear!('rails')
+end
 
 require 'active_record'
 require 'where_lower'
