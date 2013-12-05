@@ -32,6 +32,12 @@ Other types will not be touched
 SomeActiveRecordClass.where_lower(attribute1: 'AbC', attribute2: ['stRing', 123, :symBol], attribute3: ('AA'..'AZ'))
 ```
 
+You can also add table name in key if you are using it with association  
+I don't plan to support any "smart" table guessing though
+```ruby
+record.association_records.where_lower('association_table.association_column' => value)
+```
+
 Contributors
 ============
 [Matthew Rudy Jacobs](https://github.com/matthewrudy) (Who wrote the first version of `where_lower` method)
