@@ -6,8 +6,6 @@ end
 require 'active_record'
 require 'where_lower'
 
-require 'squeel'
-
 require 'database_cleaner'
 require 'logger'
 

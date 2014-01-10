@@ -1,11 +1,15 @@
-require 'appraisal'
-require 'rubygems'
-require 'bundler/setup'
-require 'bundler/gem_tasks'
-require 'rspec/core/rake_task'
+require "appraisal"
+require "bundler"
+require "rspec/core/rake_task"
 
-task :default do
-  sh "rake appraisal:install && rake appraisal spec"
-end
+Bundler::GemHelper.install_tasks
 
 RSpec::Core::RakeTask.new(:spec)
+
+if !ENV["APPRAISAL_INITIALIZED"] && !ENV["TRAVIS"]
+  task :default do
+    sh "rake appraisal:install && rake appraisal spec"
+  end
+else
+  task :default => :spec
+end

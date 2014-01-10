@@ -120,7 +120,7 @@ describe WhereLower do
           it 'can be chained with where' do
             Parent.where_lower(name: parent_name).where(description: parent_description).should_not be_empty
           end
-          
+
           it 'can be chained with where_lower' do
             Parent.where_lower(name: parent_name).where_lower(description: parent_description).should_not be_empty
           end
@@ -132,16 +132,6 @@ describe WhereLower do
 
           it 'can be chained with name scope' do
             Parent.where_lower(name: parent_name).latest_first.should_not be_empty
-          end
-
-
-          it 'can be chained with where in squeel' do
-            description_value = parent_description
-            Parent.where_lower(name: parent_name).where{description.eq description_value}.should_not be_empty
-          end
-
-          it 'can be chained with order in squeel' do
-            Parent.where_lower(name: parent_name).order{description}.should_not be_empty
           end
         end
       end
