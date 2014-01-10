@@ -133,6 +133,9 @@ describe WhereLower do
           it 'can be chained with name scope' do
             Parent.where_lower(name: parent_name).latest_first.should_not be_empty
           end
+          it 'can be chained with class method scope' do
+            Parent.where_lower(name: parent_name).earliest_first.should_not be_empty
+          end
         end
       end
     end
