@@ -1,21 +1,7 @@
 module WhereLower
   module Base
-    def self.included(base)
-      base.extend(ClassMethods)
-    end
-
-    module ClassMethods
-      def where_lower(fields)
-        fields.is_a?(Hash) or raise AugumentError, 'fields is not a Hash'
-
-        spawn_lower_scope(fields)
-      end
-
-      private
-
-      def spawn_lower_scope(fields)
-        scope = self
-
+    class << self
+      def spawn_lower_scope(scope, fields)
         fields.each do |name, value|
           scope = spawn_lower_scope_by_type(scope, name, value)
         end
