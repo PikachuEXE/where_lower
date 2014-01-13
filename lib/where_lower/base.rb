@@ -53,8 +53,10 @@ module WhereLower
         case type
         when :in
           "lower(#{column_name}) IN (?)"
-        else #:eq
+        when :eq
           "lower(#{column_name}) = ?"
+        else
+          raise ArgumentError
         end
       end
     end
