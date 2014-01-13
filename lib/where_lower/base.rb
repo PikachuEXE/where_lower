@@ -1,5 +1,5 @@
 module WhereLower
-  module Core
+  module Base
     def self.included(base)
       base.extend(ClassMethods)
     end
@@ -42,7 +42,7 @@ module WhereLower
           )
         else # other single value classes
           scope = scope.where(column_name => value)
-        end 
+        end
 
         scope
       end
