@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.timestamps
   end
 
-  create_table :chirdren do |t|
+  create_table :children do |t|
     t.string :name
     t.text :description
     t.integer :age, null: false, default: 0
@@ -73,4 +73,6 @@ end
 
 class Child < ActiveRecord::Base
   belongs_to :parent, inverse_of: :children, touch: true
+
+  validates_presence_of :parent
 end
