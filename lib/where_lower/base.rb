@@ -8,11 +8,9 @@ module WhereLower
       # @params [ActiveRecord::Relation, ActiveRecord::Base] scope
       # @params [Hash] fields
       def spawn_lower_scope(scope, fields)
-        fields.each do |name, value|
-          scope = spawn_lower_scope_by_type(scope, name, value)
+        fields.inject(scope) do |new_scope, (name, value)|
+          spawn_lower_scope_by_type(new_scope, name, value)
         end
-
-        scope
       end
 
       # @params [ActiveRecord::Relation, ActiveRecord::Base] scope
