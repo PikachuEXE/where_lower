@@ -32,6 +32,12 @@ Other types will not be touched
 SomeActiveRecordClass.where_lower(attribute1: 'AbC', attribute2: ['stRing', 123, :symBol], attribute3: ('AA'..'AZ'))
 ```
 
+Since `0.3.0`  
+You can pass a nested hash (1 level deep only) for association condition
+```ruby
+record.association_records.where_lower(association_table: {association_column: value})
+```
+
 You can also add table name in key if you are using it with association  
 I don't plan to support any "smart" table guessing though
 ```ruby
