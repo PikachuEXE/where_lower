@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 1) do
   create_table :parents do |t|
     t.string :name
     t.text :description
-    t.integer :age, null: false, default: 21
+    t.integer :age, null: false, default: 0
     t.boolean :is_minecraft_lover, default: true
 
     t.timestamps
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(:version => 1) do
     t.boolean :is_minecraft_lover, default: true
 
     t.integer :parent_id
+
+    t.timestamps
+  end
+
+  create_table :grand_children do |t|
+    t.string :name
+    t.text :description
+    t.integer :age, null: false, default: 0
+    t.boolean :is_minecraft_lover, default: true
+
+    t.integer :child_id
 
     t.timestamps
   end
@@ -73,6 +84,13 @@ end
 
 class Child < ActiveRecord::Base
   belongs_to :parent, inverse_of: :children, touch: true
+  has_many :grand_children, inverse_of: :child
 
   validates_presence_of :parent
+end
+
+class GrandChild < ActiveRecord::Base
+  belongs_to :child, inverse_of: :grand_children, touch: true
+
+  validates_presence_of :child
 end
