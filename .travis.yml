@@ -1,4 +1,6 @@
-before_install: "gem install bundler -v=1.5.2"
+before_install:
+- gem install bundler -v=1.5.2
+- bundle --version
 rvm:
   - 1.9.2
   - 1.9.3
