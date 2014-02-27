@@ -2,7 +2,6 @@ language: ruby
 cache:
 - bundler
 rvm:
-  - 1.9.2
   - 1.9.3
   - 2.0.0
   - 2.1.0
@@ -11,8 +10,5 @@ gemfile:
   - gemfiles/rails3_1.gemfile
   - gemfiles/rails3_2.gemfile
   - gemfiles/rails4_0.gemfile
-matrix:
-  exclude:
-    - rvm: 1.9.2
-      gemfile: gemfiles/rails4_0.gemfile
+  - gemfiles/rails4_1.gemfile
 
