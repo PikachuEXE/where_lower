@@ -9,11 +9,11 @@ Tested against:
 - Active Record of version `3.1`, `3.2` and `4.0`
 - Ruby `1.9.2`, `1.9.3`, `2.0.0` (except Rails 4 with `1.9.2`)
 
-[![Build Status](https://travis-ci.org/PikachuEXE/where_lower.png?branch=master)](https://travis-ci.org/PikachuEXE/where_lower)
-[![Gem Version](https://badge.fury.io/rb/where_lower.png)](http://badge.fury.io/rb/where_lower)
-[![Dependency Status](https://gemnasium.com/PikachuEXE/where_lower.png)](https://gemnasium.com/PikachuEXE/where_lower)
-[![Coverage Status](https://coveralls.io/repos/PikachuEXE/where_lower/badge.png)](https://coveralls.io/r/PikachuEXE/where_lower)
-[![Code Climate](https://codeclimate.com/github/PikachuEXE/where_lower.png)](https://codeclimate.com/github/PikachuEXE/where_lower)
+[![Build Status](http://img.shields.io/travis/PikachuEXE/where_lower.svg)](https://travis-ci.org/PikachuEXE/where_lower)
+[![Gem Version](http://img.shields.io/gem/v/where_lower.svg)](http://badge.fury.io/rb/where_lower)
+[![Dependency Status](http://img.shields.io/gemnasium/PikachuEXE/where_lower.svg)](https://gemnasium.com/PikachuEXE/where_lower)
+[![Coverage Status](http://img.shields.io/coveralls/PikachuEXE/where_lower.svg)](https://coveralls.io/r/PikachuEXE/where_lower)
+[![Code Climate](http://img.shields.io/codeclimate/github/PikachuEXE/where_lower.svg)](https://codeclimate.com/github/PikachuEXE/where_lower)
 
 Install
 =======
