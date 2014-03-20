@@ -10,10 +10,6 @@ module WhereLower
       @scope, @column_or_table_name, @value, @prefix = scope, column_or_table_name, value, prefix
     end
 
-    def scope_arguments
-      [scope, column_or_table_name, value, prefix]
-    end
-
     # acts as factory
     def spawn
       case value
@@ -30,8 +26,11 @@ module WhereLower
       end
     end
 
-
     private
+
+    def scope_arguments
+      [scope, column_or_table_name, value, prefix]
+    end
 
     class BasicScopeSpawner < ScopeSpawner
       def spawn
