@@ -1,5 +1,7 @@
-gemfiles/*.gemfile.lock
 Gemfile.lock
 # Ignore Coverage Report
 coverage/.last_run.json
 coverage/.resultset.json
+# Ignore Appraisal related files
+gemfiles/*.gemfile.lock
+pkg/*
