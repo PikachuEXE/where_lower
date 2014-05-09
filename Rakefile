@@ -8,7 +8,7 @@ RSpec::Core::RakeTask.new(:spec)
 
 if !ENV["APPRAISAL_INITIALIZED"] && !ENV["TRAVIS"]
   task :default do
-    sh "rake appraisal:install && rake appraisal spec"
+    sh "rake appraisal install && rake appraisal spec"
   end
 else
   task :default => :spec
