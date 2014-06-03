@@ -34,79 +34,79 @@ describe WhereLower do
     describe 'finding record using string column' do
       describe 'with type string' do
         before do
-          Parent.where(name: parent_name).should_not be_empty
-          Parent.where(name: parent_name2).should be_empty
+          expect(Parent.where(name: parent_name)).to_not be_empty
+          expect(Parent.where(name: parent_name2)).to be_empty
         end
 
         it 'works like where' do
-          Parent.where_lower(name: parent_name).should_not be_empty
-          Parent.where_lower(name: parent_name2).should be_empty
+          expect(Parent.where_lower(name: parent_name)).to_not be_empty
+          expect(Parent.where_lower(name: parent_name2)).to be_empty
         end
         it 'works like where case insensitively' do
-          Parent.where_lower(name: parent_name.swapcase).should_not be_empty
-          Parent.where_lower(name: parent_name2.swapcase).should be_empty
+          expect(Parent.where_lower(name: parent_name.swapcase)).to_not be_empty
+          expect(Parent.where_lower(name: parent_name2.swapcase)).to be_empty
         end
       end
 
       describe 'with type text' do
         before do
-          Parent.where(description: parent_description).should_not be_empty
-          Parent.where(description: parent_description2).should be_empty
+          expect(Parent.where(description: parent_description)).to_not be_empty
+          expect(Parent.where(description: parent_description2)).to be_empty
         end
 
         it 'works like where' do
-          Parent.where_lower(description: parent_description).should_not be_empty
-          Parent.where_lower(description: parent_description2).should be_empty
+          expect(Parent.where_lower(description: parent_description)).to_not be_empty
+          expect(Parent.where_lower(description: parent_description2)).to be_empty
         end
         it 'works like where case insensitively' do
-          Parent.where_lower(description: parent_description.swapcase).should_not be_empty
-          Parent.where_lower(description: parent_description2.swapcase).should be_empty
+          expect(Parent.where_lower(description: parent_description.swapcase)).to_not be_empty
+          expect(Parent.where_lower(description: parent_description2.swapcase)).to be_empty
         end
       end
 
       describe 'with different types of values in conditions' do
         describe 'with Range' do
           before do
-            Parent.where(name: ('Parens'..'Parenu')).should_not be_empty
-            Parent.where(name: ('Parenu'..'Parenv')).should be_empty
+            expect(Parent.where(name: ('Parens'..'Parenu'))).to_not be_empty
+            expect(Parent.where(name: ('Parenu'..'Parenv'))).to be_empty
           end
 
           it 'works like where' do
-            Parent.where_lower(name: ('Parens'..'Parenu')).should_not be_empty
-            Parent.where_lower(name: ('Parenu'..'Parenv')).should be_empty
+            expect(Parent.where_lower(name: ('Parens'..'Parenu'))).to_not be_empty
+            expect(Parent.where_lower(name: ('Parenu'..'Parenv'))).to be_empty
           end
           it 'works like where case insensitively' do
-            Parent.where_lower(name: (('Parens'.swapcase)..('Parenu'.swapcase))).should_not be_empty
-            Parent.where_lower(name: (('Parenu'.swapcase)..('Parenv'.swapcase))).should be_empty
+            expect(Parent.where_lower(name: (('Parens'.swapcase)..('Parenu'.swapcase)))).to_not be_empty
+            expect(Parent.where_lower(name: (('Parenu'.swapcase)..('Parenv'.swapcase)))).to be_empty
           end
         end
 
         describe 'with Array' do
           before do
-            Parent.where(name: [parent_name, parent_name2]).should_not be_empty
-            Parent.where(name: [parent_name2, parent_name3]).should be_empty
+            expect(Parent.where(name: [parent_name, parent_name2])).to_not be_empty
+            expect(Parent.where(name: [parent_name2, parent_name3])).to be_empty
           end
 
           it 'works like where' do
-            Parent.where_lower(name: [parent_name, parent_name2]).should_not be_empty
-            Parent.where_lower(name: [parent_name2, parent_name3]).should be_empty
-            Parent.where_lower(name: []).should be_empty
+            expect(Parent.where_lower(name: [parent_name, parent_name2])).to_not be_empty
+            expect(Parent.where_lower(name: [parent_name2, parent_name3])).to be_empty
+            expect(Parent.where_lower(name: [])).to be_empty
           end
           it 'works like where case insensitively' do
-            Parent.where_lower(name: [parent_name.swapcase, parent_name2.swapcase]).should_not be_empty
-            Parent.where_lower(name: [parent_name2.swapcase, parent_name3.swapcase]).should be_empty
-            Parent.where_lower(name: []).should be_empty
+            expect(Parent.where_lower(name: [parent_name.swapcase, parent_name2.swapcase])).to_not be_empty
+            expect(Parent.where_lower(name: [parent_name2.swapcase, parent_name3.swapcase])).to be_empty
+            expect(Parent.where_lower(name: [])).to be_empty
           end
         end
 
         describe 'with nil' do
           context 'when record with nil value does not exist' do
             before do
-              Parent.where(name: nil).should be_empty
+              expect(Parent.where(name: nil)).to be_empty
             end
 
             it 'works like where' do
-              Parent.where_lower(name: nil).should be_empty
+              expect(Parent.where_lower(name: nil)).to be_empty
             end
           end
           context 'when record with nil value does exist' do
@@ -115,11 +115,11 @@ describe WhereLower do
             end
 
             before do
-              Parent.where(name: nil).should_not be_empty
+              expect(Parent.where(name: nil)).to_not be_empty
             end
 
             it 'works like where' do
-              Parent.where_lower(name: nil).should_not be_empty
+              expect(Parent.where_lower(name: nil)).to_not be_empty
             end
           end
         end
@@ -135,23 +135,23 @@ describe WhereLower do
 
         describe 'with chaining' do
           it 'can be chained with where' do
-            Parent.where_lower(name: parent_name).where(description: parent_description).should_not be_empty
+            expect(Parent.where_lower(name: parent_name).where(description: parent_description)).to_not be_empty
           end
 
           it 'can be chained with where_lower' do
-            Parent.where_lower(name: parent_name).where_lower(description: parent_description).should_not be_empty
+            expect(Parent.where_lower(name: parent_name).where_lower(description: parent_description)).to_not be_empty
           end
 
           it 'can be chained with order' do
-            Parent.where_lower(name: parent_name).order(:description).should_not be_empty
+            expect(Parent.where_lower(name: parent_name).order(:description)).to_not be_empty
           end
 
 
           it 'can be chained with name scope' do
-            Parent.where_lower(name: parent_name).latest_first.should_not be_empty
+            expect(Parent.where_lower(name: parent_name).latest_first).to_not be_empty
           end
           it 'can be chained with class method scope' do
-            Parent.where_lower(name: parent_name).earliest_first.should_not be_empty
+            expect(Parent.where_lower(name: parent_name).earliest_first).to_not be_empty
           end
         end
       end
@@ -160,25 +160,25 @@ describe WhereLower do
     describe 'finding record using non string columns' do
       describe 'with type integer' do
         before do
-          Parent.where(age: parent.age).should_not be_empty
-          Parent.where(age: parent.age + 1).should be_empty
+          expect(Parent.where(age: parent.age)).to_not be_empty
+          expect(Parent.where(age: parent.age + 1)).to be_empty
         end
 
         it 'works like where' do
-          Parent.where_lower(age: parent.age).should_not be_empty
-          Parent.where_lower(age: parent.age + 1).should be_empty
+          expect(Parent.where_lower(age: parent.age)).to_not be_empty
+          expect(Parent.where_lower(age: parent.age + 1)).to be_empty
         end
       end
 
       describe 'with type boolean' do
         before do
-          Parent.where(is_minecraft_lover: parent.is_minecraft_lover).should_not be_empty
-          Parent.where(is_minecraft_lover: !parent.is_minecraft_lover).should be_empty
+          expect(Parent.where(is_minecraft_lover: parent.is_minecraft_lover)).to_not be_empty
+          expect(Parent.where(is_minecraft_lover: !parent.is_minecraft_lover)).to be_empty
         end
 
         it 'works like where' do
-          Parent.where_lower(is_minecraft_lover: parent.is_minecraft_lover).should_not be_empty
-          Parent.where_lower(is_minecraft_lover: !parent.is_minecraft_lover).should be_empty
+          expect(Parent.where_lower(is_minecraft_lover: parent.is_minecraft_lover)).to_not be_empty
+          expect(Parent.where_lower(is_minecraft_lover: !parent.is_minecraft_lover)).to be_empty
         end
       end
     end
@@ -189,79 +189,79 @@ describe WhereLower do
       describe 'finding record using string column' do
         describe 'with type string' do
           before do
-            Parent.joins(:children).where('children.name' => child_name).should_not be_empty
-            Parent.joins(:children).where('children.name' => child_name2).should be_empty
+            expect(Parent.joins(:children).where('children.name' => child_name)).to_not be_empty
+            expect(Parent.joins(:children).where('children.name' => child_name2)).to be_empty
           end
 
           it 'works like where' do
-            Parent.joins(:children).where_lower('children.name' => child_name).should_not be_empty
-            Parent.joins(:children).where_lower('children.name' => child_name2).should be_empty
+            expect(Parent.joins(:children).where_lower('children.name' => child_name)).to_not be_empty
+            expect(Parent.joins(:children).where_lower('children.name' => child_name2)).to be_empty
           end
           it 'works like where case insensitively' do
-            Parent.joins(:children).where_lower('children.name' => child_name.swapcase).should_not be_empty
-            Parent.joins(:children).where_lower('children.name' => child_name2.swapcase).should be_empty
+            expect(Parent.joins(:children).where_lower('children.name' => child_name.swapcase)).to_not be_empty
+            expect(Parent.joins(:children).where_lower('children.name' => child_name2.swapcase)).to be_empty
           end
         end
 
         describe 'with type text' do
           before do
-            Parent.joins(:children).where('children.description' => child_description).should_not be_empty
-            Parent.joins(:children).where('children.description' => child_description2).should be_empty
+            expect(Parent.joins(:children).where('children.description' => child_description)).to_not be_empty
+            expect(Parent.joins(:children).where('children.description' => child_description2)).to be_empty
           end
 
           it 'works like where' do
-            Parent.joins(:children).where_lower('children.description' => child_description).should_not be_empty
-            Parent.joins(:children).where_lower('children.description' => child_description2).should be_empty
+            expect(Parent.joins(:children).where_lower('children.description' => child_description)).to_not be_empty
+            expect(Parent.joins(:children).where_lower('children.description' => child_description2)).to be_empty
           end
           it 'works like where case insensitively' do
-            Parent.joins(:children).where_lower('children.description' => child_description.swapcase).should_not be_empty
-            Parent.joins(:children).where_lower('children.description' => child_description2.swapcase).should be_empty
+            expect(Parent.joins(:children).where_lower('children.description' => child_description.swapcase)).to_not be_empty
+            expect(Parent.joins(:children).where_lower('children.description' => child_description2.swapcase)).to be_empty
           end
         end
 
         describe 'with different types of values in conditions' do
           describe 'with Range' do
             before do
-              Parent.joins(:children).where('children.name' => ('Chilc'..'Chile')).should_not be_empty
-              Parent.joins(:children).where('children.name' => ('Chile'..'Chilf')).should be_empty
+              expect(Parent.joins(:children).where('children.name' => ('Chilc'..'Chile'))).to_not be_empty
+              expect(Parent.joins(:children).where('children.name' => ('Chile'..'Chilf'))).to be_empty
             end
 
             it 'works like where' do
-              Parent.joins(:children).where_lower('children.name' => ('Chilc'..'Chile')).should_not be_empty
-              Parent.joins(:children).where_lower('children.name' => ('Chile'..'Chilf')).should be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => ('Chilc'..'Chile'))).to_not be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => ('Chile'..'Chilf'))).to be_empty
             end
             it 'works like where case insensitively' do
-              Parent.joins(:children).where_lower('children.name' => (('Chilc'.swapcase)..('Chile'.swapcase))).should_not be_empty
-              Parent.joins(:children).where_lower('children.name' => (('Chile'.swapcase)..('Chilf'.swapcase))).should be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => (('Chilc'.swapcase)..('Chile'.swapcase)))).to_not be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => (('Chile'.swapcase)..('Chilf'.swapcase)))).to be_empty
             end
           end
 
           describe 'with Array' do
             before do
-              Parent.joins(:children).where('children.name' => [child_name, child_name2]).should_not be_empty
-              Parent.joins(:children).where('children.name' => [child_name2, child_name3]).should be_empty
+              expect(Parent.joins(:children).where('children.name' => [child_name, child_name2])).to_not be_empty
+              expect(Parent.joins(:children).where('children.name' => [child_name2, child_name3])).to be_empty
             end
 
             it 'works like where' do
-              Parent.joins(:children).where_lower('children.name' => [child_name, child_name2]).should_not be_empty
-              Parent.joins(:children).where_lower('children.name' => [child_name2, child_name3]).should be_empty
-              Parent.joins(:children).where_lower('children.name' => []).should be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => [child_name, child_name2])).to_not be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => [child_name2, child_name3])).to be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => [])).to be_empty
             end
             it 'works like where case insensitively' do
-              Parent.joins(:children).where_lower('children.name' => [child_name.swapcase, child_name2.swapcase]).should_not be_empty
-              Parent.joins(:children).where_lower('children.name' => [child_name2.swapcase, child_name3.swapcase]).should be_empty
-              Parent.joins(:children).where_lower('children.name' => []).should be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => [child_name.swapcase, child_name2.swapcase])).to_not be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => [child_name2.swapcase, child_name3.swapcase])).to be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => [])).to be_empty
             end
           end
 
           describe 'with nil' do
             context 'when record with nil value does not exist' do
               before do
-                Parent.joins(:children).where('children.name' => nil).should be_empty
+                expect(Parent.joins(:children).where('children.name' => nil)).to be_empty
               end
 
               it 'works like where' do
-                Parent.joins(:children).where_lower('children.name' => nil).should be_empty
+                expect(Parent.joins(:children).where_lower('children.name' => nil)).to be_empty
               end
             end
             context 'when record with nil value does exist' do
@@ -270,11 +270,11 @@ describe WhereLower do
               end
 
               before do
-                Parent.joins(:children).where('children.name' => nil).should_not be_empty
+                expect(Parent.joins(:children).where('children.name' => nil)).to_not be_empty
               end
 
               it 'works like where' do
-                Parent.joins(:children).where_lower('children.name' => nil).should_not be_empty
+                expect(Parent.joins(:children).where_lower('children.name' => nil)).to_not be_empty
               end
             end
           end
@@ -290,23 +290,23 @@ describe WhereLower do
 
           describe 'with chaining' do
             it 'can be chained with where' do
-              Parent.joins(:children).where_lower('children.name' => child_name).where('children.description' => child_description).should_not be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => child_name).where('children.description' => child_description)).to_not be_empty
             end
 
             it 'can be chained with where_lower' do
-              Parent.joins(:children).where_lower('children.name' => child_name).where_lower('children.description' => child_description).should_not be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => child_name).where_lower('children.description' => child_description)).to_not be_empty
             end
 
             it 'can be chained with order' do
-              Parent.joins(:children).where_lower('children.name' => child_name).order('children.description').should_not be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => child_name).order('children.description')).to_not be_empty
             end
 
 
             it 'can be chained with name scope' do
-              Parent.joins(:children).where_lower('children.name' => child_name).latest_first.should_not be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => child_name).latest_first).to_not be_empty
             end
             it 'can be chained with class method scope' do
-              Parent.joins(:children).where_lower('children.name' => child_name).earliest_first.should_not be_empty
+              expect(Parent.joins(:children).where_lower('children.name' => child_name).earliest_first).to_not be_empty
             end
           end
         end
@@ -315,25 +315,25 @@ describe WhereLower do
       describe 'finding record using non string columns' do
         describe 'with type integer' do
           before do
-            Parent.joins(:children).where('children.age' => child.age).should_not be_empty
-            Parent.joins(:children).where('children.age' => child.age + 1).should be_empty
+            expect(Parent.joins(:children).where('children.age' => child.age)).to_not be_empty
+            expect(Parent.joins(:children).where('children.age' => child.age + 1)).to be_empty
           end
 
           it 'works like where' do
-            Parent.joins(:children).where_lower('children.age' => child.age).should_not be_empty
-            Parent.joins(:children).where_lower('children.age' => child.age + 1).should be_empty
+            expect(Parent.joins(:children).where_lower('children.age' => child.age)).to_not be_empty
+            expect(Parent.joins(:children).where_lower('children.age' => child.age + 1)).to be_empty
           end
         end
 
         describe 'with type boolean' do
           before do
-            Parent.joins(:children).where('children.is_minecraft_lover' => child.is_minecraft_lover).should_not be_empty
-            Parent.joins(:children).where('children.is_minecraft_lover' => !child.is_minecraft_lover).should be_empty
+            expect(Parent.joins(:children).where('children.is_minecraft_lover' => child.is_minecraft_lover)).to_not be_empty
+            expect(Parent.joins(:children).where('children.is_minecraft_lover' => !child.is_minecraft_lover)).to be_empty
           end
 
           it 'works like where' do
-            Parent.joins(:children).where_lower('children.is_minecraft_lover' => child.is_minecraft_lover).should_not be_empty
-            Parent.joins(:children).where_lower('children.is_minecraft_lover' => !child.is_minecraft_lover).should be_empty
+            expect(Parent.joins(:children).where_lower('children.is_minecraft_lover' => child.is_minecraft_lover)).to_not be_empty
+            expect(Parent.joins(:children).where_lower('children.is_minecraft_lover' => !child.is_minecraft_lover)).to be_empty
           end
         end
       end
@@ -343,79 +343,79 @@ describe WhereLower do
       describe 'finding record using string column' do
         describe 'with type string' do
           before do
-            Parent.joins(:children).where(children: {name: child_name}).should_not be_empty
-            Parent.joins(:children).where(children: {name: child_name2}).should be_empty
+            expect(Parent.joins(:children).where(children: {name: child_name})).to_not be_empty
+            expect(Parent.joins(:children).where(children: {name: child_name2})).to be_empty
           end
 
           it 'works like where' do
-            Parent.joins(:children).where_lower(children: {name: child_name}).should_not be_empty
-            Parent.joins(:children).where_lower(children: {name: child_name2}).should be_empty
+            expect(Parent.joins(:children).where_lower(children: {name: child_name})).to_not be_empty
+            expect(Parent.joins(:children).where_lower(children: {name: child_name2})).to be_empty
           end
           it 'works like where case insensitively' do
-            Parent.joins(:children).where_lower(children: {name: child_name.swapcase}).should_not be_empty
-            Parent.joins(:children).where_lower(children: {name: child_name2.swapcase}).should be_empty
+            expect(Parent.joins(:children).where_lower(children: {name: child_name.swapcase})).to_not be_empty
+            expect(Parent.joins(:children).where_lower(children: {name: child_name2.swapcase})).to be_empty
           end
         end
 
         describe 'with type text' do
           before do
-            Parent.joins(:children).where(children: {description: child_description}).should_not be_empty
-            Parent.joins(:children).where(children: {description: child_description2}).should be_empty
+            expect(Parent.joins(:children).where(children: {description: child_description})).to_not be_empty
+            expect(Parent.joins(:children).where(children: {description: child_description2})).to be_empty
           end
 
           it 'works like where' do
-            Parent.joins(:children).where_lower(children: {description: child_description}).should_not be_empty
-            Parent.joins(:children).where_lower(children: {description: child_description2}).should be_empty
+            expect(Parent.joins(:children).where_lower(children: {description: child_description})).to_not be_empty
+            expect(Parent.joins(:children).where_lower(children: {description: child_description2})).to be_empty
           end
           it 'works like where case insensitively' do
-            Parent.joins(:children).where_lower(children: {description: child_description.swapcase}).should_not be_empty
-            Parent.joins(:children).where_lower(children: {description: child_description2.swapcase}).should be_empty
+            expect(Parent.joins(:children).where_lower(children: {description: child_description.swapcase})).to_not be_empty
+            expect(Parent.joins(:children).where_lower(children: {description: child_description2.swapcase})).to be_empty
           end
         end
 
         describe 'with different types of values in conditions' do
           describe 'with Range' do
             before do
-              Parent.joins(:children).where(children: {name: ('Chilc'..'Chile')}).should_not be_empty
-              Parent.joins(:children).where(children: {name: ('Chile'..'Chilf')}).should be_empty
+              expect(Parent.joins(:children).where(children: {name: ('Chilc'..'Chile')})).to_not be_empty
+              expect(Parent.joins(:children).where(children: {name: ('Chile'..'Chilf')})).to be_empty
             end
 
             it 'works like where' do
-              Parent.joins(:children).where_lower(children: {name: ('Chilc'..'Chile')}).should_not be_empty
-              Parent.joins(:children).where_lower(children: {name: ('Chile'..'Chilf')}).should be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: ('Chilc'..'Chile')})).to_not be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: ('Chile'..'Chilf')})).to be_empty
             end
             it 'works like where case insensitively' do
-              Parent.joins(:children).where_lower(children: {name: (('Chilc'.swapcase)..('Chile'.swapcase))}).should_not be_empty
-              Parent.joins(:children).where_lower(children: {name: (('Chile'.swapcase)..('Chilf'.swapcase))}).should be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: (('Chilc'.swapcase)..('Chile'.swapcase))})).to_not be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: (('Chile'.swapcase)..('Chilf'.swapcase))})).to be_empty
             end
           end
 
           describe 'with Array' do
             before do
-              Parent.joins(:children).where(children: {name: [child_name, child_name2]}).should_not be_empty
-              Parent.joins(:children).where(children: {name: [child_name2, child_name3]}).should be_empty
+              expect(Parent.joins(:children).where(children: {name: [child_name, child_name2]})).to_not be_empty
+              expect(Parent.joins(:children).where(children: {name: [child_name2, child_name3]})).to be_empty
             end
 
             it 'works like where' do
-              Parent.joins(:children).where_lower(children: {name: [child_name, child_name2]}).should_not be_empty
-              Parent.joins(:children).where_lower(children: {name: [child_name2, child_name3]}).should be_empty
-              Parent.joins(:children).where_lower(children: {name: []}).should be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: [child_name, child_name2]})).to_not be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: [child_name2, child_name3]})).to be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: []})).to be_empty
             end
             it 'works like where case insensitively' do
-              Parent.joins(:children).where_lower(children: {name: [child_name.swapcase, child_name2.swapcase]}).should_not be_empty
-              Parent.joins(:children).where_lower(children: {name: [child_name2.swapcase, child_name3.swapcase]}).should be_empty
-              Parent.joins(:children).where_lower(children: {name: []}).should be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: [child_name.swapcase, child_name2.swapcase]})).to_not be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: [child_name2.swapcase, child_name3.swapcase]})).to be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: []})).to be_empty
             end
           end
 
           describe 'with nil' do
             context 'when record with nil value does not exist' do
               before do
-                Parent.joins(:children).where(children: {name: nil}).should be_empty
+                expect(Parent.joins(:children).where(children: {name: nil})).to be_empty
               end
 
               it 'works like where' do
-                Parent.joins(:children).where_lower(children: {name: nil}).should be_empty
+                expect(Parent.joins(:children).where_lower(children: {name: nil})).to be_empty
               end
             end
             context 'when record with nil value does exist' do
@@ -424,11 +424,11 @@ describe WhereLower do
               end
 
               before do
-                Parent.joins(:children).where(children: {name: nil}).should_not be_empty
+                expect(Parent.joins(:children).where(children: {name: nil})).to_not be_empty
               end
 
               it 'works like where' do
-                Parent.joins(:children).where_lower(children: {name: nil}).should_not be_empty
+                expect(Parent.joins(:children).where_lower(children: {name: nil})).to_not be_empty
               end
             end
           end
@@ -444,23 +444,23 @@ describe WhereLower do
 
           describe 'with chaining' do
             it 'can be chained with where' do
-              Parent.joins(:children).where_lower(children: {name: child_name}).where(children: {description: child_description}).should_not be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: child_name}).where(children: {description: child_description})).to_not be_empty
             end
 
             it 'can be chained with where_lower' do
-              Parent.joins(:children).where_lower(children: {name: child_name}).where_lower(children: {description: child_description}).should_not be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: child_name}).where_lower(children: {description: child_description})).to_not be_empty
             end
 
             it 'can be chained with order' do
-              Parent.joins(:children).where_lower(children: {name: child_name}).order('children.description').should_not be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: child_name}).order('children.description')).to_not be_empty
             end
 
 
             it 'can be chained with name scope' do
-              Parent.joins(:children).where_lower(children: {name: child_name}).latest_first.should_not be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: child_name}).latest_first).to_not be_empty
             end
             it 'can be chained with class method scope' do
-              Parent.joins(:children).where_lower(children: {name: child_name}).earliest_first.should_not be_empty
+              expect(Parent.joins(:children).where_lower(children: {name: child_name}).earliest_first).to_not be_empty
             end
           end
         end
@@ -469,25 +469,25 @@ describe WhereLower do
       describe 'finding record using non string columns' do
         describe 'with type integer' do
           before do
-            Parent.joins(:children).where(children: {age: child.age}).should_not be_empty
-            Parent.joins(:children).where(children: {age: child.age + 1}).should be_empty
+            expect(Parent.joins(:children).where(children: {age: child.age})).to_not be_empty
+            expect(Parent.joins(:children).where(children: {age: child.age + 1})).to be_empty
           end
 
           it 'works like where' do
-            Parent.joins(:children).where_lower(children: {age: child.age}).should_not be_empty
-            Parent.joins(:children).where_lower(children: {age: child.age + 1}).should be_empty
+            expect(Parent.joins(:children).where_lower(children: {age: child.age})).to_not be_empty
+            expect(Parent.joins(:children).where_lower(children: {age: child.age + 1})).to be_empty
           end
         end
 
         describe 'with type boolean' do
           before do
-            Parent.joins(:children).where(children: {is_minecraft_lover: child.is_minecraft_lover}).should_not be_empty
-            Parent.joins(:children).where(children: {is_minecraft_lover: !child.is_minecraft_lover}).should be_empty
+            expect(Parent.joins(:children).where(children: {is_minecraft_lover: child.is_minecraft_lover})).to_not be_empty
+            expect(Parent.joins(:children).where(children: {is_minecraft_lover: !child.is_minecraft_lover})).to be_empty
           end
 
           it 'works like where' do
-            Parent.joins(:children).where_lower(children: {is_minecraft_lover: child.is_minecraft_lover}).should_not be_empty
-            Parent.joins(:children).where_lower(children: {is_minecraft_lover: !child.is_minecraft_lover}).should be_empty
+            expect(Parent.joins(:children).where_lower(children: {is_minecraft_lover: child.is_minecraft_lover})).to_not be_empty
+            expect(Parent.joins(:children).where_lower(children: {is_minecraft_lover: !child.is_minecraft_lover})).to be_empty
           end
         end
       end
