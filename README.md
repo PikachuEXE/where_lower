@@ -5,9 +5,6 @@ Provide an easy way to use case insensitive `where` in ActiveRecord.
 
 ### Support
 ===========
-Tested against:
-- Active Record of version `3.1`, `3.2` and `4.0`
-- Ruby `1.9.2`, `1.9.3`, `2.0.0` (except Rails 4 with `1.9.2`)
 
 [![Build Status](http://img.shields.io/travis/PikachuEXE/where_lower.svg)](https://travis-ci.org/PikachuEXE/where_lower)
 [![Gem Version](http://img.shields.io/gem/v/where_lower.svg)](http://badge.fury.io/rb/where_lower)
