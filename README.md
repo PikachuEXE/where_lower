@@ -6,11 +6,11 @@ Provide an easy way to use case insensitive `where` in ActiveRecord.
 ### Support
 ===========
 
-[![Build Status](http://img.shields.io/travis/PikachuEXE/where_lower.svg)](https://travis-ci.org/PikachuEXE/where_lower)
-[![Gem Version](http://img.shields.io/gem/v/where_lower.svg)](http://badge.fury.io/rb/where_lower)
-[![Dependency Status](http://img.shields.io/gemnasium/PikachuEXE/where_lower.svg)](https://gemnasium.com/PikachuEXE/where_lower)
-[![Coverage Status](http://img.shields.io/coveralls/PikachuEXE/where_lower.svg)](https://coveralls.io/r/PikachuEXE/where_lower)
-[![Code Climate](http://img.shields.io/codeclimate/github/PikachuEXE/where_lower.svg)](https://codeclimate.com/github/PikachuEXE/where_lower)
+[![Build Status](http://img.shields.io/travis/PikachuEXE/where_lower.svg?style=flat-square)](https://travis-ci.org/PikachuEXE/where_lower)
+[![Gem Version](http://img.shields.io/gem/v/where_lower.svg?style=flat-square)](http://badge.fury.io/rb/where_lower)
+[![Dependency Status](http://img.shields.io/gemnasium/PikachuEXE/where_lower.svg?style=flat-square)](https://gemnasium.com/PikachuEXE/where_lower)
+[![Coverage Status](http://img.shields.io/coveralls/PikachuEXE/where_lower.svg?style=flat-square)](https://coveralls.io/r/PikachuEXE/where_lower)
+[![Code Climate](http://img.shields.io/codeclimate/github/PikachuEXE/where_lower.svg?style=flat-square)](https://codeclimate.com/github/PikachuEXE/where_lower)
 
 Install
 =======
