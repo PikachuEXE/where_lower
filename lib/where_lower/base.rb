@@ -1,5 +1,5 @@
 module WhereLower
-  SEPERATOR = '.'.freeze
+  SEPERATOR = ".".freeze
 
   class TooDeepNestedConditions < ArgumentError; end
 

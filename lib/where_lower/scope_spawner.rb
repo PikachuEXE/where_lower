@@ -12,18 +12,8 @@ module WhereLower
 
     # acts as factory
     def spawn
-      case value
-      when Hash
-        HashScopeSpawner.spawn(*scope_arguments)
-      when String
-        StringScopeSpawner.spawn(*scope_arguments)
-      when Range
-        RangeScopeSpawner.spawn(*scope_arguments)
-      when Array
-        ArrayScopeSpawner.spawn(*scope_arguments)
-      else
-        BasicScopeSpawner.spawn(*scope_arguments)
-      end
+      CLASS_TO_SPAWNER_CLASS_MAPPINGS[value.class].
+        spawn(*scope_arguments)
     end
 
     private
@@ -87,20 +77,29 @@ module WhereLower
       end
 
       def processed_value
-        value.to_a.map {|x| x.to_s.downcase}
+        value.to_a.map { |x| x.to_s.downcase }
       end
     end
 
     class HashScopeSpawner < BasicScopeSpawner
       def spawn
-        # If prefix already exists, that means we are in association table already, which cannot accept another hash
+        # If prefix already exists,
+        # that means we are in association table already,
+        # which cannot accept another hash
         # This gem has no ability to handle deep nested associaiton reflection yet
-        raise TooDeepNestedConditions unless prefix.nil?
+        fail TooDeepNestedConditions unless prefix.nil?
 
         value.inject(scope) do |new_scope, (column_name, column_value)|
           ScopeSpawner.spawn(new_scope, column_name, column_value, column_or_table_name)
         end
       end
     end
+
+    CLASS_TO_SPAWNER_CLASS_MAPPINGS = {
+      Hash   => HashScopeSpawner,
+      String => StringScopeSpawner,
+      Range  => RangeScopeSpawner,
+      Array  => ArrayScopeSpawner,
+    }.tap { |h| h.default = BasicScopeSpawner }.freeze
   end
 end

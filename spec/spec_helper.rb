@@ -1,16 +1,16 @@
 if ENV["TRAVIS"]
-  require 'coveralls'
-  Coveralls.wear!('rails')
+  require "coveralls"
+  Coveralls.wear!("rails")
 end
 
-require 'active_record'
-require 'where_lower'
+require "active_record"
+require "where_lower"
 
-require 'database_cleaner'
-require 'logger'
+require "database_cleaner"
+require "logger"
 
-require 'rspec'
-require 'rspec/its'
+require "rspec"
+require "rspec/its"
 
 # ActiveRecord::Base.logger = Logger.new(STDOUT) # for easier debugging
 
@@ -30,12 +30,12 @@ end
 
 # connect
 ActiveRecord::Base.establish_connection(
-  :adapter => "sqlite3",
-  :database => ":memory:"
+  adapter:  "sqlite3",
+  database: ":memory:",
 )
 
 # create tables
-ActiveRecord::Schema.define(:version => 1) do
+ActiveRecord::Schema.define(version: 1) do
   create_table :parents do |t|
     t.string :name
     t.text :description
@@ -68,9 +68,11 @@ ActiveRecord::Schema.define(:version => 1) do
   end
 end
 
-class ActiveRecord::Base
-  def self.silent_set_table_name(name)
-    self.table_name = name
+module ActiveRecord
+  class Base
+    def self.silent_set_table_name(name)
+      self.table_name = name
+    end
   end
 end
 
@@ -79,7 +81,7 @@ end
 class Parent < ActiveRecord::Base
   has_many :children, inverse_of: :parent
 
-  scope :latest_first, proc { order('created_at DESC') }
+  scope :latest_first, proc { order("created_at DESC") }
   def self.earliest_first
     order(:created_at)
   end

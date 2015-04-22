@@ -6,7 +6,7 @@ module WhereLower
 
     module ClassMethods
       def where_lower(fields)
-        fields.is_a?(Hash) or raise AugumentError, 'fields is not a Hash'
+        fail AugumentError, "fields is not a Hash" unless fields.is_a?(Hash)
 
         WhereLower::Base.spawn_lower_scope(self, fields)
       end
