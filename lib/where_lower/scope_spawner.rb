@@ -39,16 +39,6 @@ module WhereLower
       def spawn
         scope.where(query_string, processed_value)
       end
-
-      private
-
-      def query_string
-        "#{column_name} = ?"
-      end
-
-      def processed_value
-        value
-      end
     end
 
     class StringScopeSpawner < EqualScopeSpawner
