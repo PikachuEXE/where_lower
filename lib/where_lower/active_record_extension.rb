@@ -1,3 +1,6 @@
+require "active_record"
+require "where_lower/base"
+
 module WhereLower
   module ActiveRecordExtension
     def self.included(base)

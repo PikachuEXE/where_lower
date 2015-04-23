@@ -7,7 +7,10 @@ module WhereLower
     end
 
     def initialize(scope, column_or_table_name, value, prefix = nil)
-      @scope, @column_or_table_name, @value, @prefix = scope, column_or_table_name, value, prefix
+      @scope                = scope
+      @column_or_table_name = column_or_table_name
+      @value                = value
+      @prefix               = prefix
     end
 
     # acts as factory

@@ -1,3 +1,5 @@
+require "where_lower/scope_spawner"
+
 module WhereLower
   SEPERATOR = ".".freeze
 
