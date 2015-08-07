@@ -10,3 +10,6 @@ pkg/*
 
 # Inch
 .inch
+
+# IDEA files
+/.idea/
