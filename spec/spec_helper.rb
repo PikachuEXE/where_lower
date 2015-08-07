@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 1) do
     t.integer :age, null: false, default: 0
     t.boolean :is_minecraft_lover, default: true
 
-    t.timestamps
+    t.timestamps(null: false)
   end
 
   create_table :children do |t|
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 1) do
 
     t.integer :parent_id
 
-    t.timestamps
+    t.timestamps(null: false)
   end
 
   create_table :grand_children do |t|
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 1) do
 
     t.integer :child_id
 
-    t.timestamps
+    t.timestamps(null: false)
   end
 end
 
