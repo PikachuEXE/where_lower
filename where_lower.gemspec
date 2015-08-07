@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary       = <<-DOC
     Provide an easy way to use case insensitive `where` in ActiveRecord.
   DOC
-  s.description   = <<-DOC
+  s.description = <<-DOC
     ActiveRecord provides no method for
     case insensitive version of `where` method.
     So here is one.
