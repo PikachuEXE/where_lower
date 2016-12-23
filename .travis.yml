@@ -7,11 +7,9 @@ cache:
 rvm:
   - 2.1.10
   - 2.2.6
-  # Since the Travis Build Env does not recognize `2.3` alias yet
-  # We need to specify the version precisely
   - 2.3.3
   - ruby-head
-gemfile:
+gemfiles:
   - gemfiles/rails_4_0.gemfile
   - gemfiles/rails_4_1.gemfile
   - gemfiles/rails_4_2.gemfile
