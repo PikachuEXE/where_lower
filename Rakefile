@@ -11,8 +11,8 @@ RuboCop::RakeTask.new(:rubocop)
 
 if !ENV["APPRAISAL_INITIALIZED"] && !ENV["TRAVIS"]
   task :default do
-    sh "appraisal install && rake appraisal spec rubocop"
+    sh "appraisal install && rake appraisal spec"
   end
 else
-  task default: [:spec, :rubocop]
+  task default: [:spec]
 end
