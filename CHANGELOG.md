@@ -18,7 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Nothing
 
 
-## [0.3.1]
+## [0.3.1] - 2016-12-23
 
 ### Changed
 
@@ -27,7 +27,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Drop support for Ruby < 2.1
 
 
-## [0.3.0]
+## [0.3.0] - 2014-01-14
 
 ### Added
 
@@ -38,7 +38,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Now it requires at least ruby 1.9.2
 
 
-## [0.2.0]
+## [0.2.0] - 2013-09-09
 
 ### Changed
 
@@ -50,7 +50,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - You can now use this with named scopes
 
 
-## 0.1.0
+## 0.1.0 - 2013-04-12
 
 ### Added
 
