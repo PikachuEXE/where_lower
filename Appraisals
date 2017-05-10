@@ -1,9 +1,4 @@
 
-appraise "rails_4_0" do
-  version = "~> 4.0.12"
-  gem "activerecord", version
-end
-
 appraise "rails_4_1" do
   version = "~> 4.1.8"
   gem "activerecord", version
@@ -16,5 +11,10 @@ end
 
 appraise "rails_5_0" do
   version = "~> 5.0.0"
+  gem "activerecord", version
+end
+
+appraise "rails_5_1" do
+  version = "~> 5.1.0"
   gem "activerecord", version
 end
