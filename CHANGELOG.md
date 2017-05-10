@@ -11,7 +11,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-- Nothing
+- Add support for AR 5.1.x
+- Drop support for AR 4.0.x
+- Drop support for Ruby < 2.2
 
 ### Fixed
 
