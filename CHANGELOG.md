@@ -18,6 +18,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Nothing
 
 
+## [0.3.3] - 2019-08-26
+
+### Changed
+
+- Add support for AR 6.x
+- Drop support for Ruby < 2.4
+
+
 ## [0.3.2] - 2017-05-11
 
 ### Changed
@@ -66,8 +74,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Initial Release
 
 
-[Unreleased]: https://github.com/AssetSync/asset_sync/compare/v0.3.2...HEAD
-[0.3.2]: https://github.com/AssetSync/asset_sync/compare/v0.3.1...v0.3.2
-[0.3.1]: https://github.com/AssetSync/asset_sync/compare/v0.3.0...v0.3.1
-[0.3.0]: https://github.com/AssetSync/asset_sync/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/AssetSync/asset_sync/compare/v0.1.0...v0.2.0
+[Unreleased]: https://github.com/PikachuEXE/where_lower/compare/v0.3.3...HEAD
+[0.3.2]: https://github.com/PikachuEXE/where_lower/compare/v0.3.2...v0.3.3
+[0.3.2]: https://github.com/PikachuEXE/where_lower/compare/v0.3.1...v0.3.2
+[0.3.1]: https://github.com/PikachuEXE/where_lower/compare/v0.3.0...v0.3.1
+[0.3.0]: https://github.com/PikachuEXE/where_lower/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/PikachuEXE/where_lower/compare/v0.1.0...v0.2.0

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module WhereLower
   # String form of version, to be parsed by Gem::Version
-  VERSION = "0.3.2"
+  VERSION = "0.3.3"
 
   # Return a version object instead of just a string for easier comparison
   #
