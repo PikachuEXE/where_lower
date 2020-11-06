@@ -1,0 +1,49 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - 'README.md'
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'README.md'
+
+jobs:
+  unit_tests:
+    name: Unit Tests
+    if: "contains(github.event.commits[0].message, '[ci skip]') == false"
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu
+        ruby:
+          - 2.5
+          - 2.6
+          - 2.7
+          - ruby-head
+        gemfile:
+          - gemfiles/rails_4_2.gemfile
+          - gemfiles/rails_5_0.gemfile
+          - gemfiles/rails_5_1.gemfile
+          - gemfiles/rails_5_2.gemfile
+          - gemfiles/rails_6_0.gemfile
+    runs-on: ${{ matrix.os }}-latest
+    continue-on-error: ${{ endsWith(matrix.ruby, 'head') || matrix.ruby == 'debug' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Bundle Install
+        run: |
+          export BUNDLE_GEMFILE="${GITHUB_WORKSPACE}/${{ matrix.gemfile }}"
+          bundle install --jobs 4 --retry 3
+      - name: Test
+        run: bundle exec rake spec
