@@ -5,7 +5,7 @@ Provide an easy way to use case insensitive `where` in ActiveRecord.
 
 ## Status
 
-[![Build Status](http://img.shields.io/travis/PikachuEXE/where_lower.svg?style=flat-square)](https://travis-ci.org/PikachuEXE/where_lower)
+[![GitHub Build Status](https://img.shields.io/github/workflow/status/PikachuEXE/where_lower/Tests?style=flat-square)](https://github.com/PikachuEXE/where_lower/actions?query=workflow%3ATests)
 
 [![Gem Version](http://img.shields.io/gem/v/where_lower.svg?style=flat-square)](http://badge.fury.io/rb/where_lower)
 
