@@ -19,3 +19,8 @@ appraise "rails_6_0" do
   version = "~> 6.0.0"
   gem "activerecord", version
 end
+
+appraise "rails_6_1" do
+  version = ">= 6.1.0.rc1", "<= 6.2.0"
+  gem "activerecord", version
+end
