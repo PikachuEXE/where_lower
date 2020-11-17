@@ -8,13 +8,10 @@ Provide an easy way to use case insensitive `where` in ActiveRecord.
 [![GitHub Build Status](https://img.shields.io/github/workflow/status/PikachuEXE/where_lower/Tests?style=flat-square)](https://github.com/PikachuEXE/where_lower/actions?query=workflow%3ATests)
 
 [![Gem Version](http://img.shields.io/gem/v/where_lower.svg?style=flat-square)](http://badge.fury.io/rb/where_lower)
-
 [![License](https://img.shields.io/github/license/PikachuEXE/where_lower.svg?style=flat-square)](http://badge.fury.io/rb/where_lower)
 
 [![Coverage Status](http://img.shields.io/coveralls/PikachuEXE/where_lower.svg?style=flat-square)](https://coveralls.io/r/PikachuEXE/where_lower)
-
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/PikachuEXE/where_lower.svg?style=flat-square)](https://codeclimate.com/github/PikachuEXE/where_lower)
-
 [![Inch CI](https://inch-ci.org/github/PikachuEXE/where_lower.svg?branch=master)](https://inch-ci.org/github/PikachuEXE/where_lower)
 
 
