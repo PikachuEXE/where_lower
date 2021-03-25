@@ -43,7 +43,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec-its", "~> 1.0"
   s.add_development_dependency "sqlite3", ">= 1.3"
   s.add_development_dependency "database_cleaner", ">= 1.0"
-  s.add_development_dependency "coveralls", ">= 0.7"
+  s.add_development_dependency "simplecov", ">= 0.21"
+  s.add_development_dependency "simplecov-lcov", ">= 0.8"
   s.add_development_dependency "gem-release", ">= 0.7"
   s.add_development_dependency "inch", "~> 0.5", ">= 0.5.10"
 
