@@ -24,9 +24,8 @@ jobs:
         os:
           - ubuntu
         ruby:
-          - 2.5
-          - 2.6
           - 2.7
+          - 3.0
         gemfile:
           - gemfiles/rails_5_0.gemfile
           - gemfiles/rails_5_1.gemfile
@@ -38,8 +37,12 @@ jobs:
           - false
         include:
           - os: ubuntu
+            ruby: 3.1
+            gemfile: gemfiles/rails_7_0.gemfile
+            allow_failures: true
+          - os: ubuntu
             ruby: ruby-head
-            gemfile: gemfiles/rails_6_1.gemfile
+            gemfile: gemfiles/rails_7_0.gemfile
             allow_failures: true
     env:
       BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
