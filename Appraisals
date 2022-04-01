@@ -21,6 +21,11 @@ appraise "rails_6_0" do
 end
 
 appraise "rails_6_1" do
-  version = ">= 6.1.0.rc1", "<= 6.2.0"
+  version = "~> 6.1.0"
+  gem "activerecord", version
+end
+
+appraise "rails7_0" do
+  version = "~> 7.0.0"
   gem "activerecord", version
 end
