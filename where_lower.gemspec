@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "gem-release", ">= 0.7"
   s.add_development_dependency "inch", "~> 0.5", ">= 0.5.10"
 
-  s.required_ruby_version = ">= 2.4.0"
+  s.required_ruby_version = ">= 2.7.0"
 
   s.required_rubygems_version = ">= 1.4.0"
 end
