@@ -35,7 +35,7 @@ jobs:
         allow_failures:
           - false
         exclude:
-            ruby: "3.1"
+          - ruby: "3.1"
             gemfile: gemfiles/rails_8_0.gemfile
         include:
           - os: ubuntu
