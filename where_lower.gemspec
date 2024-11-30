@@ -40,7 +40,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rake", ">= 10.0", "<= 14.0"
   s.add_development_dependency "appraisal", "~> 2.0", ">= 2.5.0"
   s.add_development_dependency "rspec", "~> 3.0"
-  s.add_development_dependency "rspec-its", "~> 1.0"
+  s.add_development_dependency "rspec-its", "~> 2.0"
   s.add_development_dependency "sqlite3", ">= 1.3"
   s.add_development_dependency "database_cleaner", ">= 1.0"
   s.add_development_dependency "simplecov", ">= 0.21"
