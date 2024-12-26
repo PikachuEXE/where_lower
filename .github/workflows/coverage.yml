@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         ruby:
-          - "3.4"
+          - "3.3"
         gemfile:
           - gemfiles/rails_7_0.gemfile
           - gemfiles/rails_7_1.gemfile
