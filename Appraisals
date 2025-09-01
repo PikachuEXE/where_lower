@@ -3,6 +3,9 @@ appraise "rails_7_0" do
   version = "~> 7.0.0"
   gem "activerecord", version
   gem "sqlite3", "~> 1.3"
+
+  gem "mutex_m"
+  gem "logger"
 end
 
 appraise "rails_7_1" do

@@ -18,6 +18,9 @@ if ENV["COVERALLS"]
   end
 end
 
+# Workaround for uninitialized constant ActiveSupport::LoggerThreadSafeLevel::Logger
+require "logger"
+
 require "active_record"
 require "where_lower"
 
